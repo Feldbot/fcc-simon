@@ -1,0 +1,285 @@
+/* Global */
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  text-align: center;
+}
+html {
+  box-sizing: border-box;
+  overflow: hidden; /* Eliminates scroll bar */
+}
+#wrap {
+  display: flex;
+  height: 100vh; /* Need height or won't vertically center */
+  justify-content: center;
+  align-items: center;
+
+  /* Photo by artbaggage from Pixabay.com */
+  background: center  no-repeat url('../images/circular-837510_1920.jpg');
+}
+
+#game {
+  position: relative;
+  width: 310px;
+  height: 310px;
+}
+#buttons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -139px 0 0 -139px;
+  display: grid;
+  grid-template-columns: repeat(2, 135px);
+  grid-template-rows: repeat(2, 135px);
+  grid-gap: .5em; /* 8px */
+  grid-template-areas:
+  'green   red'
+  'yellow  blue';
+}
+.btn_gameplay {
+  width: 135px;
+  height: 135px;
+  opacity: .5;
+}
+#btn_green {
+  grid-area: green;
+  background-color: rgb(62,222,75);
+  border-radius: 100% 0 0 0;
+}
+#btn_red {
+  grid-area: red;
+  background-color: rgb(222,75,62);
+  border-radius: 0 100% 0 0;
+}
+#btn_blue {
+  grid-area: blue;
+  background-color: rgb(75,62,222);
+  border-radius: 0 0 100% 0;
+}
+#btn_yellow {
+  grid-area: yellow;
+  background-color: rgb(255,234,55);
+  border-radius: 0 0 0 100%;
+}
+
+/* Center UI controls */
+#center {
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -80px 0 0 -80px;
+  width: 160px;
+  height: 160px;
+  background-color: rgb(255,255,255);
+  border: 1px solid rgb(0,0,0);
+  border-radius: 50%;
+}
+#name {
+  margin-top: -5px;
+}
+#main_controls {
+  display: flex;
+  justify-content: space-around;
+  height: 50px;
+  margin: 0px 5px;
+  position: relative;
+}
+div#count{
+  background-color: rgb(25,25,25);
+  border-radius: 6px;
+  width: 30px;
+  height: 25px;
+  position: relative;
+  top: -2px;
+}
+#btn_start, #btn_strict {
+  width: 20px;
+  height: 20px;
+  border: 1px solid grey;
+  border-radius: 50%;
+}
+#btn_start {
+  background-color: rgb(255,0,0);
+}
+#btn_strict {
+  background-color: rgb(255,255,0);
+}
+#strict {
+  position: relative;
+}
+.strict_indicator {
+  width: 10px;
+  height: 10px;
+  background-color: rgb(25,25,25);
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  right: 0;
+}
+.red_indicator {
+  background-color: rgb(255,0,0);
+}
+
+/* Toggle switch code: https://www.w3schools.com/howto/howto_css_switch.asp */
+/* The switch box around On/Off slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 21px;
+}
+/* Hide default HTML checkbox */
+.switch input {display: none;}
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+input:checked + .slider { /* + is adjacent sibling combinator */
+  background-color: #2196F3;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+#background {
+  background-color: rgb(22,22,22);
+  z-index: -10;
+  width: 310px;
+  height: 310px;
+  border-radius: 50%;
+  box-shadow: 10px 10px 22px rgb(72,72,72);
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-family: sans-serif;
+  text-align: center;
+}
+h1 {
+  font-family: "Teko";
+  font-weight: 700;
+  font-size: 2.5em;
+  margin-top: 15px;
+}
+h2 {
+  font-size: 1.2em;
+  color: rgb(90,25,25);
+}
+h3 {
+  font-size: .8em;
+  margin-top: 5px;
+}
+h3#count {
+  padding-top: 4px;
+}
+
+/*  Responsive (tablet and above ) */
+@media screen and (min-width: 600px) {
+  #game {
+    position: relative;
+    width: 510px;
+    height: 510px;
+  }
+  #buttons {
+    margin: -228px 0 0 -228px;
+    grid-template-columns: repeat(2, 220px);
+    grid-template-rows: repeat(2, 220px);
+    grid-gap: 1em;
+  }
+  .btn_gameplay {
+    width: 220px;
+    height: 220px;
+  }
+  #center {
+    margin: -130px 0 0 -130px;
+    width: 260px;
+    height: 260px;
+  }
+  #main_controls {
+    justify-content: space-around;
+    height: 75px;
+    margin: 10px;
+  }
+  div#count{
+    border-radius: 6px;
+    width: 45px;
+    height: 40px;
+    top: -10px;
+  }
+  #btn_start, #btn_strict {
+    width: 25px;
+    height: 25px;
+  }
+  .strict_indicator {
+    width: 12px;
+    height: 12px;
+    top: -15px;
+    right: 0;
+  }
+  .switch {
+    margin: -5px 3px;
+    width: 45px;
+    height: 26px;
+  }
+  .slider:before {
+    height: 18px;
+    width: 18px;
+    left: 6px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .2s;
+    transition: .2s;
+  }
+  input:checked + .slider:before {
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
+  }
+  #background {
+    width: 510px;
+    height: 510px;
+    box-shadow: 20px 20px 42px rgb(72,72,72);
+  }
+  h1 {
+    font-size: 4em;
+    margin-top: 30px;
+  }
+  h2 {
+    font-size: 2em;
+    margin-top: 2px;
+  }
+  h3 {
+    font-size: 1em;
+    margin-top: 13px;
+  }
+  h3#count {
+    padding-top: 0;
+    margin-top: 12px;
+  }
+}
